@@ -4,7 +4,7 @@ import Helpers from "../Helper/Helpers";
 const Dashboard = () => {
   // Dummy data for now, you can replace this with data fetched from your backend
   const [totalProducts, setTotalProducts] = useState(0);
-
+  let email = localStorage.getItem("email");
   const [totalUsers, setTotalUsers] = useState(0);
 
   useEffect(() => {
@@ -26,14 +26,14 @@ const Dashboard = () => {
     try {
       const res = await Helpers("/admin/getalluser", "GET");
       if (res && res?.status) {
-        setAllReviewData(res?.data);
+        setAllReviewData(res?.data.reverse());
       } else {
       }
     } catch (error) {
       console.log(error);
     }
   };
-
+  const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
@@ -53,26 +53,64 @@ const Dashboard = () => {
     }
   };
 
+  useEffect(() => {
+    FetchAllReview();
+    FetchAllUser();
+  }, []);
+
+  const FetchAllUser = async () => {
+    try {
+      const res = await Helpers("/admin/allregisteruser", "GET");
+      if (res && res?.status) {
+        setUsers(res?.data);
+        // console.log("fdfdfdfdfd", res?.data);
+      } else {
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="p-8">
       <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
 
       {/* Dashboard Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-        {/* Total Products */}
-        <div className="bg-white shadow-md rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-2">
-            Total Number of Reviews
-          </h2>
-          <p className="text-3xl">{totalProducts}</p>
-        </div>
 
-        {/* Total Users */}
-        <div className="bg-white shadow-md rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-2">Total Number of Users </h2>
-          <p className="text-3xl">{totalUsers}</p>
+      {email === "admin@gmail.com" ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+          {/* Total Products */}
+          <div className="bg-white shadow-md rounded-lg p-6">
+            <h2 className="text-xl font-semibold mb-2">
+              Total Number of Reviews
+            </h2>
+            <p className="text-3xl">
+              {allData?.length > 0 ? allData?.length : 0}
+            </p>
+          </div>
+
+          {/* Total Users */}
+          <div className="bg-white shadow-md rounded-lg p-6">
+            <h2 className="text-xl font-semibold mb-2">
+              {" "}
+              Total Number of Users
+            </h2>
+            <p className="text-3xl">{users?.length > 0 ? users?.length : 0}</p>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-12 w-full">
+          {/* Total Products */}
+          <div className="bg-white shadow-md rounded-lg p-6 w-full">
+            <h2 className="text-xl font-semibold mb-2">
+              Total Number of Reviews
+            </h2>
+            <p className="text-3xl">
+              {allData?.length > 0 ? allData?.length : 0}
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Recent Orders */}
       <div className="mt-10">
@@ -111,10 +149,11 @@ const Dashboard = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {currentData.slice(0, 10).map((item, index) => (
+                  {[...currentData].map((item, index) => (
                     <tr key={index + 1}>
                       <td style={{ padding: "10px", border: "1px solid #ddd" }}>
-                        {index + 1}
+                        {/* Calculate the continuous serial number */}
+                        {(currentPage - 1) * itemsPerPage + (index + 1)}
                       </td>
                       <td style={{ padding: "10px", border: "1px solid #ddd" }}>
                         {item.name}
@@ -123,28 +162,23 @@ const Dashboard = () => {
                         {new Date(item.createdAt).toISOString().split("T")[0]}
                       </td>
                       <td style={{ padding: "10px", border: "1px solid #ddd" }}>
-                        <div
-                          style={{ display: "flex", flexDirection: "coloum" }}
-                        >
+                        <div style={{ display: "flex", flexDirection: "row" }}>
                           {[...Array(Number(item?.numberofstar))].map(
-                            (_, index) => {
-                              return (
-                                <div class="star-ratingsdd" key={index}>
-                                  <span
-                                    class="star"
-                                    style={{
-                                      fontSize: "24px" /* Adjust star size */,
-                                      color:
-                                        "gold" /* Gold color for the stars */,
-                                      padding: "0 5px",
-                                    }}
-                                    data-value={index + 1}
-                                  >
-                                    &#9733;
-                                  </span>
-                                </div>
-                              );
-                            }
+                            (_, starIndex) => (
+                              <div className="star-ratingsdd" key={starIndex}>
+                                <span
+                                  className="star"
+                                  style={{
+                                    fontSize: "24px",
+                                    color: "gold",
+                                    padding: "0 5px",
+                                  }}
+                                  data-value={starIndex + 1}
+                                >
+                                  &#9733;
+                                </span>
+                              </div>
+                            )
                           )}
                         </div>
                       </td>

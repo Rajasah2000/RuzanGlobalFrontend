@@ -104,14 +104,41 @@ const AdminNavbar = () => {
             All_Bad_Reviews
           </Link>
 
-          <Link
-            to="/admin/users"
-            className="block px-4 py-2 hover:bg-white hover:text-black transition duration-300"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Users
-          </Link>
+          {email === "admin@gmail.com" && (
+            <Link
+              className="block px-4 py-2 hover:bg-white hover:text-black transition duration-300"
+              to="/admin/users"
+              onClick={() => setMobileMenuOpen(false)}
+              // className="hover:text-gray-400"
+            >
+              Users
+            </Link>
+          )}
 
+          {email !== "admin@gmail.com" && date && (
+            <Link
+              to="/admin/users"
+              className="block px-4 py-2 hover:bg-white hover:text-black transition duration-300"
+            >
+              <span>Expiry Date : {} </span>{" "}
+              <span
+                style={{
+                  backgroundColor: "red",
+                  color: "white",
+                  padding: "5px",
+                  borderRadius: "4px",
+                }}
+              >
+                {
+                  new Date(
+                    new Date(date).setFullYear(new Date(date).getFullYear() + 1)
+                  )
+                    .toISOString()
+                    .split("T")[0]
+                }
+              </span>
+            </Link>
+          )}
           {isAuthenticated && (
             <button
               onClick={() => {

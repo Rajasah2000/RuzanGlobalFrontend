@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const GoogleReviewPage = () => {
   const [selectedRating, setSelectedRating] = useState("");
@@ -56,13 +56,23 @@ const GoogleReviewPage = () => {
     window.location.reload();
   };
 
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
+
+  // Update isDesktop state based on window resize
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div
       style={{
         fontFamily: "Arial, sans-serif",
         backgroundColor: "#f4f4f4",
         textAlign: "center",
-        padding: "50px",
+        padding: isDesktop ? "50px" : "0",
         margin: "0",
       }}
     >

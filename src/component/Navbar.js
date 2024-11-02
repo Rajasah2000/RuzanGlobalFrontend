@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   FaSearch,
   FaUserAlt,
@@ -15,16 +15,25 @@ const Navbar = () => {
 
   // Dummy category data
   const categories = [
-    { id: 1, name: "Tracksuit" },
-    { id: 2, name: "T-shirt" },
-    { id: 3, name: "Shorts" },
-    { id: 4, name: "Shoes" },
+    { id: 1, name: "Our Services" },
+    { id: 2, name: "Our Clients" },
+    { id: 3, name: "About Us" },
+    { id: 4, name: "Contact Us" },
   ];
 
   // Toggle dropdown for mobile
   const handleDropdownClick = () => {
     setDropdownOpen(!isDropdownOpen);
   };
+
+  const productRef = useRef(null);
+  // const clientRef = useRef(null);
+  // const contactRef = useRef(null);
+
+  // Step 2: Scroll functions for each section
+  // const scrollToSection = (ref) => {
+  //   ref.current.scrollIntoView({ behavior: "smooth" });
+  // };
 
   return (
     <nav className="bg-black text-white py-4 fixed w-full top-0 z-50 px-2">
@@ -43,14 +52,23 @@ const Navbar = () => {
             onMouseLeave={() => setDropdownOpen(false)}
           >
             <button className="text-lg flex items-center focus:outline-none">
-              Men <FaChevronDown className="ml-2" />
+              Home <FaChevronDown className="ml-2" />
             </button>
             {isDropdownOpen && (
               <div className="absolute bg-black text-white mt-2 rounded shadow-md w-32 z-20">
                 {categories.map((category) => (
                   <Link
                     key={category.id}
-                    to={`/category/${category.name.toLowerCase()}`}
+                    onClick={() => {
+                      if (category?.name === "Contact Us") {
+                        window.scrollTo({
+                          top: document.documentElement.scrollHeight, // Scroll to the bottom
+                          behavior: "smooth", // Smooth scrolling
+                        });
+                      }
+                    }}
+                    target="_blank"
+                    // to={`/category/${category.name.toLowerCase()}`}
                     className="block px-4 py-2 hover:bg-white hover:text-black transition duration-300"
                   >
                     {category.name}
@@ -88,16 +106,28 @@ const Navbar = () => {
               onClick={handleDropdownClick}
               className="w-full flex justify-between items-center px-4 py-2 text-lg focus:outline-none"
             >
-              Categories <FaChevronDown className="ml-2" />
+              Home <FaChevronDown className="ml-2" />
             </button>
             {isDropdownOpen && (
               <div className="bg-black text-white mt-2 rounded shadow-md w-full">
                 {categories.map((category) => (
                   <Link
                     key={category.id}
-                    to={`/category/${category.name.toLowerCase()}`}
+                    onClick={() => {
+                      if (category?.name === "Contact Us") {
+                        window.scrollTo({
+                          top: document.documentElement.scrollHeight, // Scroll to the bottom
+                          behavior: "smooth", // Smooth scrolling
+                        });
+                        setMobileMenuOpen(false);
+                      } else {
+                        setMobileMenuOpen(false);
+                      }
+                    }}
+                    target="_blank"
+                    // to={`/category/${category.name.toLowerCase()}`}
                     className="block px-4 py-2 hover:bg-white hover:text-black transition duration-300"
-                    onClick={() => setMobileMenuOpen(false)} // Close after click
+                    // onClick={() => setMobileMenuOpen(false)} // Close after click
                   >
                     {category.name}
                   </Link>

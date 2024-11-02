@@ -27,7 +27,7 @@ const HomePage = () => {
   return (
     <div className="pt-16 font-bebas">
       {/* Hero Section */}
-      <section className="relative h-[40rem] flex items-center justify-center text-white mb-8">
+      {/* <section className="relative h-[40rem] flex items-center justify-center text-white mb-8">
         <video
           autoPlay
           loop
@@ -43,43 +43,66 @@ const HomePage = () => {
 
         <div className="relative z-10 text-center">
           <h1 className="text-6xl font-bold mb-4">Welcome to Ruzan Global</h1>
-          <p className="text-xl mb-8">Get the best sportswear for men</p>
+          <p className="text-xl mb-8">Get the best Smart Solutions</p>
           <button className="bg-white text-black py-2 px-4 rounded-full hover:bg-gray-200 transition">
             Shop Now
           </button>
         </div>
+      </section> */}
+      <section className="w-full">
+        <img
+          src="./3.jpg"
+          alt="Full Width Example"
+          className="w-full h-auto object-cover"
+        />
       </section>
+      {/* Full-Width Image */}
+      <section className="w-full">
+        <img
+          src="./2.jpg"
+          alt="Full Width Example"
+          className="w-full h-auto object-cover"
+        />
+      </section>
+      {/* <section className="w-full">
+        <img
+          src="./3.jpg"
+          alt="Full Width Example"
+          className="w-full h-auto object-cover"
+        />
+      </section> */}
 
-      {/* Men Section with Background Image and Overlay */}
-      <section
-        className="relative bg-cover bg-center bg-no-repeat py-24 text-center m-8 rounded-md"
-        style={{ backgroundImage: `url(${mensCollectionImage})` }}
-      >
-        <div className="absolute inset-0 bg-black opacity-70 rounded-md"></div>
-
-        <div className="relative z-10 ">
-          <h2 className="text-5xl font-bold mb-4 text-white">
-            Men's Collection
-          </h2>
-          <p className="text-lg text-gray-200 mb-8">
-            Explore the best collection of men's sportswear.
-          </p>
-          <Link to="/men">
-            <button className="bg-white text-black py-2 px-4 rounded-full hover:bg-gray-200 transition">
-              Shop Men’s Collection
-            </button>
-          </Link>
-        </div>
+      <section className="w-full">
+        <img
+          src="./5.jpg"
+          alt="Full Width Example"
+          className="w-full h-auto object-cover"
+        />
+      </section>
+      <section className="w-full">
+        <img
+          src="./6.jpg"
+          alt="Full Width Example"
+          className="w-full h-auto object-cover"
+        />
+      </section>
+      <section className="w-full">
+        <img
+          src="./4.jpg"
+          alt="Full Width Example"
+          className="w-full h-auto object-cover"
+        />
+      </section>
+      <section className="w-full">
+        <img
+          src="./7.jpg"
+          alt="Full Width Example"
+          className="w-full h-auto object-cover"
+        />
       </section>
 
       {/* Latest Trends */}
-      <LatestTrends latestTrends={latestTrends} loading={loading} />
-
-      {/* Featured Collection */}
-      <FeaturedCollection
-        featuredCollection={featuredCollection}
-        loading={loading}
-      />
+      {/* <LatestTrends latestTrends={latestTrends} loading={loading} /> */}
     </div>
   );
 };

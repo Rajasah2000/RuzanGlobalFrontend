@@ -1,5 +1,12 @@
 import React from "react";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedin,
+  FaYoutube,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -29,21 +36,33 @@ const Footer = () => {
           marginBottom: "20px",
         }}
       >
-        <a href="https://facebook.com" style={iconStyle} aria-label="Facebook">
+        <a
+          href="https://www.facebook.com/RuzanGlobal"
+          style={iconStyle}
+          aria-label="Facebook"
+        >
           <FaFacebook />
         </a>
-        <a href="https://twitter.com" style={iconStyle} aria-label="Twitter">
-          <FaTwitter />
-        </a>
         <a
-          href="https://instagram.com"
+          href="https://www.instagram.com/RuzanGlobal"
           style={iconStyle}
-          aria-label="Instagram"
+          aria-label="Twitter"
         >
           <FaInstagram />
         </a>
-        <a href="https://linkedin.com" style={iconStyle} aria-label="LinkedIn">
-          <FaLinkedin />
+        <a
+          href="https://www.youtube.com/@RuzanGlobal"
+          style={iconStyle}
+          aria-label="Instagram"
+        >
+          <FaYoutube />
+        </a>
+        <a
+          href="https://wa.me/message/I65SIPFGQMMAK1"
+          style={iconStyle}
+          aria-label="LinkedIn"
+        >
+          <FaWhatsapp />
         </a>
       </div>
 

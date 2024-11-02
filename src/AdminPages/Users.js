@@ -17,7 +17,7 @@ const Users = () => {
     try {
       const res = await Helpers("/admin/allregisteruser", "GET");
       if (res && res?.status) {
-        setUsers(res?.data);
+        setUsers(res?.data?.reverse());
         // console.log("fdfdfdfdfd", res?.data);
       } else {
       }

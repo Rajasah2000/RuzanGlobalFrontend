@@ -22,7 +22,7 @@ const Categories = () => {
     try {
       const res = await Helpers("/admin/getalluser", "GET");
       if (res && res?.status) {
-        setAllReviewData(res?.data);
+        setAllReviewData(res?.data?.reverse());
         console.log("fdfdfdfdfd", res?.data);
       } else {
       }
