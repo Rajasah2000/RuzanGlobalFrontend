@@ -31,7 +31,7 @@ const GoogleReviewPage = () => {
       registeredBy: "6721321667bb91b12c339c60",
     };
 
-    fetch("http://localhost:8000/api/user/register", {
+    fetch("https://api.ruzanglobal.com/api/user/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

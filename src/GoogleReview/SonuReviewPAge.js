@@ -17,6 +17,8 @@ const SonuReviewPAge = () => {
     }
   };
 
+  // handle submit
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const name = event.target.name.value;
@@ -31,7 +33,7 @@ const SonuReviewPAge = () => {
       registeredBy: "6721326767bb91b12c339c63",
     };
 
-    fetch("http://localhost:8000/api/user/register", {
+    fetch("https://api.ruzanglobal.com/api/user/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

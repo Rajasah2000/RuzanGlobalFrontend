@@ -20,7 +20,10 @@ const AdminNavbar = () => {
 
   return (
     <nav className="bg-black text-white py-4 fixed w-full top-0 z-50 px-2">
-      <div className="container mx-auto flex justify-between items-center">
+      <div
+        className="container mx-auto flex justify-between items-center"
+        style={{ padding: "none" }}
+      >
         {/* Logo */}
         <div className="text-2xl font-bold">
           <Link to="/admin/dashboard">Ruzan Global Admin</Link>
@@ -39,6 +42,16 @@ const AdminNavbar = () => {
           {email === "admin@gmail.com" && (
             <Link to="/admin/users" className="hover:text-gray-400">
               Users
+            </Link>
+          )}
+          {email === "admin@gmail.com" && (
+            <Link to="/admin/order" className="hover:text-gray-400">
+              Order_Lists
+            </Link>
+          )}
+          {email === "admin@gmail.com" && (
+            <Link to="/admin/contact" className="hover:text-gray-400">
+              Inquiry_Lists
             </Link>
           )}
 

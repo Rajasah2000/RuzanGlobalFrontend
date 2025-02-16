@@ -23,8 +23,14 @@ const Footer = () => {
 
       {/* Description */}
       <p style={{ marginBottom: "20px" }}>
-        Delivering excellence in service with passion and commitment. Your
-        satisfaction is our priority!
+        Your ultimate solution for effortless Magic Google Reviews with just a
+        Scan or Tap and comprehensive Website Development services and many
+        more!
+      </p>
+
+      <p style={{ color: "red", marginBottom: "12px" }}>
+        +91 8585 8484 01 ||{" "}
+        <span style={{ color: "green" }}>ruzan.global@gmail.com</span>
       </p>
 
       {/* Social Media Icons */}
@@ -68,7 +74,7 @@ const Footer = () => {
 
       {/* Copyright */}
       <p style={{ fontSize: "0.8em", opacity: 0.8 }}>
-        © 2024 Your Company. All Rights Reserved.
+        © 2024 ruzanglobal.com. All Rights Reserved.
       </p>
     </footer>
   );

@@ -1,0 +1,121 @@
+.home-container {
+    max-width: 1200px;
+    /* margin: 0 auto; */
+    padding: 0rem;
+    color: #333;
+}
+
+/* About Section */
+.about-section {
+    margin-bottom: 4rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #1a1a1a;
+    /* margin-bottom: 1.5rem; */
+}
+
+h2 {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+}
+
+.what-we-offer {
+    margin-top: 3rem;
+}
+
+.offer-intro {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.benefits-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.benefit-item {
+    padding: 1rem 0;
+}
+
+.benefit-item h3 {
+    font-size: 1.2rem;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.benefit-item p {
+    line-height: 1.6;
+}
+
+/* Vision Section */
+.vision-section {
+    background-color: #f8f9fa;
+    padding: 3rem;
+    border-radius: 10px;
+}
+
+.get-started,
+.our-vision,
+.customer-benefits {
+    margin-bottom: 3rem;
+}
+
+.customer-benefits ul {
+    list-style: none;
+    padding: 0;
+}
+
+.customer-benefits li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.customer-benefits li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .home-container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .vision-section {
+        padding: 2rem;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) {
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
